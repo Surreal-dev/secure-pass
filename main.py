@@ -27,24 +27,24 @@ lower = "abcdefghijklmnopqrstuvwxyz"
 digits = "0123456789"
 special = "!@#$%&*()_-;:,.~"
 
-pool = ""
+combined = ""
 required_chars = []
 
 if use_upper:
-    pool += upper
+    combined += upper
     required_chars.append(random.choice(upper))
 if use_lower:
-    pool += lower
+    combined += lower
     required_chars.append(random.choice(lower))
 if use_digits:
-    pool += digits
+    combined += digits
     required_chars.append(random.choice(digits))
 if use_special:
-    pool += special
+    combined += special
     required_chars.append(random.choice(special))
 
 remaining = passlen - len(required_chars)
-password_chars = required_chars + [random.choice(pool) for _ in range(remaining)]
+password_chars = required_chars + [random.choice(combined) for _ in range(remaining)]
 random.shuffle(password_chars)
 password = "".join(password_chars)
 
